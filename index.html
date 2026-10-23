@@ -1102,6 +1102,8 @@ document.getElementById('contact-form').addEventListener('submit',function(e){
     b.setAttribute('aria-expanded',on);b.innerHTML=on?'Show fewer projects <span><i class="fa-solid fa-arrow-up"></i></span>':'Show all '+'19'+' projects <span><i class="fa-solid fa-arrow-down"></i></span>';
     if(!on)document.getElementById('list-item-5')&&document.getElementById('list-item-5').scrollIntoView();
     if(window.AOS)AOS.refresh();});})();
+/* mobile menu: close the slide-out after choosing a section */
+document.querySelectorAll('.slide-bar a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){var s=document.querySelector('.slide-bar');if(s)s.classList.remove('show');var o=document.querySelector('.body-overlay');if(o)o.classList.remove('active');document.body.classList.remove('on-side');var hb=document.querySelector('.hamburger_menu');if(hb)hb.classList.remove('active');});});
 </script>
 </body>
 

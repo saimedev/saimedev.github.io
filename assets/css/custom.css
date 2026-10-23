@@ -75,7 +75,6 @@ body.show-all-projects .proj-extra{display:block}
 @media (max-width:767px){.portfolio-section-area .portfolio-boxarea .proj-head > div > a{font-size:22px!important;line-height:30px!important}.portfolio-section-area .portfolio-boxarea2 .proj-head > div > a{font-size:20px!important;line-height:28px!important}}
 /* profile photo: transparent variant f, ~18% taller than template, no distortion */
 .main-hero-area .personal-contact-box .img1 img.profile-photo{display:block;width:100%;height:auto;aspect-ratio:676/860;object-fit:cover;object-position:center top;background:transparent}
-@media (min-width:992px){.main-hero-area .personal-contact-box .img1 img.profile-photo{max-height:max(380px,calc(100vh - 500px))}}
 /* About right column: Education + Stay With Me fill the column height */
 @media (min-width:768px){.about-right{display:flex;flex-direction:column}.about-right .stay-box{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center}}
 .about-section-area .about-boxarea .about-others-box.stay-box p{opacity:.8}
@@ -162,10 +161,26 @@ body.show-all-projects .proj-extra{display:block}
 .footer-area>*{flex:0 0 auto}
 .footer-area p{margin:0!important;white-space:nowrap;line-height:1.4}
 @media (max-width:767px){.footer-area{display:flex;flex-direction:column}.footer-area p{white-space:normal}}
-/* never allow sideways scroll from decorative pieces */
+/* never allow sideways scroll from decorative pieces. overflow-x:clip (not hidden) so body is NOT a scroll container and position:sticky keeps working */
 html,body{overflow-x:hidden}
-/* sticky profile card: only stick when the whole card fits in the viewport (short laptop screens would cut off Download CV) */
-@media (min-width:992px) and (max-height:879px){.main-hero-area .personal-contact-box{position:relative;top:0}}
+@supports (overflow:clip){html,body{overflow-x:clip}}
+/* sticky profile card (as template, desktop >=992px): stays fixed while content scrolls, and always fits the viewport.
+   Photo box shrinks with viewport height (crops from the bottom, never squished) so Download CV + socials stay visible. */
+@media (min-width:992px){
+  .main-hero-area .personal-contact-box{--card-top:90px;position:sticky;top:var(--card-top);display:flex;flex-direction:column;max-height:calc(100vh - var(--card-top) - 16px)}
+  .main-hero-area .personal-contact-box>*{flex-shrink:0}
+  .main-hero-area .personal-contact-box .img1{flex:0 1 auto;min-height:170px;overflow:hidden;border-radius:8px}
+  .main-hero-area .personal-contact-box .img1 img.profile-photo{max-height:none}
+}
+@media (min-width:1400px) and (max-width:1599px){.main-hero-area .personal-contact-box{--card-top:60px}}
+@media (min-width:1600px) and (max-width:1700px){.main-hero-area .personal-contact-box{--card-top:40px}}
+@media (min-width:992px) and (max-height:899px){
+  .main-hero-area .personal-contact-box{--card-top:24px}
+  .main-hero-area .personal-contact-box .space18{height:12px}
+  .main-hero-area .personal-contact-box .space16{height:8px}
+  .main-hero-area .personal-contact-box .space32{height:18px}
+  .main-hero-area .personal-contact-box .space44{height:22px}
+}
 /* small phones: logo + theme switch + 44px menu button must fit side by side */
 @media (max-width:991px){.header-elements{display:flex;align-items:center;justify-content:space-between;gap:8px}.header-elements .btn-area{display:flex;align-items:center;gap:6px;flex:0 0 auto}.header-elements .site-logo{min-width:0;flex:1 1 auto}}
 @media (max-width:400px){.header-area .text-logo{font-size:15px!important;letter-spacing:.5px}.theme-toggle-container{transform:scale(.85);transform-origin:right center}}

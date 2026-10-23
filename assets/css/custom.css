@@ -189,3 +189,23 @@ html,body{overflow-x:hidden}
   .theme-switch::after{content:"";position:absolute;inset:-4px -2px}
 }
 @media (max-width:767px){.stay-box ul li{flex:0 0 auto}.input-area button.vl-btn1{min-height:44px}}
+
+/* brand logo: MS badge + name / role */
+.lg{display:inline-flex;align-items:center;gap:12px;text-decoration:none}
+.lg img.lg-badge{width:44px!important;height:44px!important;max-width:none;border-radius:11px;flex:0 0 auto;display:block;filter:none!important;object-fit:fill}
+.lg-two{display:flex;flex-direction:column;line-height:1.1;text-align:left}
+.lg-two .n{font-family:var(--ztc-family-font1),sans-serif;font-weight:700;font-size:19px;color:var(--ztc-text-text-1);white-space:nowrap}
+.lg-two .r{font-family:var(--ztc-family-font1),sans-serif;font-weight:500;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#FFAE00;margin-top:4px;white-space:nowrap}
+body.light-mode .lg-two .r{color:#B87400}
+.slide-bar .lg-two .n{color:#fff}
+.slide-bar .lg-two .r{color:#FFAE00}
+@media (max-width:400px){.header-area .lg{gap:9px}.header-area .lg img.lg-badge{width:36px!important;height:36px!important;border-radius:9px}.header-area .lg-two .n{font-size:16px}.header-area .lg-two .r{font-size:10px;letter-spacing:.08em}}
+@media (max-width:340px){.header-area .lg{gap:7px}.header-area .lg img.lg-badge{width:32px!important;height:32px!important;border-radius:8px}.header-area .lg-two .n{font-size:14px}.header-area .lg-two .r{font-size:9px;letter-spacing:.05em}}
+/* spacing: hero top = header height + ~20px (header is absolute over the hero) */
+@media (max-width:399px){.main-hero-area{padding-top:116px}}
+@media (min-width:400px) and (max-width:991px){.main-hero-area{padding-top:124px}}
+@media (min-width:992px) and (max-width:1399px){.main-hero-area{padding-top:108px}}
+/* spacing: nested section containers (services/skills/projects/contact) no longer add an extra 12px side inset */
+.main-hero-area .scrollspy-example .container{padding-left:0;padding-right:0;max-width:none}
+.proj-badges{gap:8px}
+@media (max-width:340px){.header-area .lg-two .n{font-size:13px}.header-area .lg-two .r{letter-spacing:.03em}.header-elements .btn-area{gap:0}.header-elements .hamburger_menu{min-width:40px;justify-content:flex-end}}
